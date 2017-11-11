@@ -1,9 +1,6 @@
 # PE-DevOps
 Project work in Dev Ops
 
-### Installing docker:
-Use this link for [Installing docker on linux](https://runnable.com/docker/install-docker-on-linux)
-
 ### Installing jenkins: (Build Step)
 ```sh
 $ wget -q -O - https://pkg.jenkins.io/debian/jenkins-ci.org.key | sudo apt-key add -
@@ -31,3 +28,39 @@ Follow the links below to setup jenkins
 **This will trigger auto build when new commit is pushed on the github repository**
 
 ### Installing Selenium: (Testing Step)
+* Installing [selenium-webdriver](http://www.seleniumhq.org/docs/03_webdriver.jsp#chapter03-reference) by running the command below.
+```sh
+$ gem install selenium-webdriver
+```
+Using Ruby for Testing:
+```rb
+require "selenium-webdriver"
+require "test/unit"
+ 
+class LoginClass < Test::Unit::TestCase
+ 
+  def setup  
+    @driver = Selenium::WebDriver.for :firefox
+    @driver.get('http://blog.yoniflenner.net/demo')
+    @driver.manage.window.maximize  
+  end
+ 
+ 
+  def teardown
+    @driver.quit
+  end
+ 
+ 
+  def test_login
+    @driver.find_element(:name, "username").send_keys "admin"
+    @driver.find_element(:name, "password").send_keys "demo"
+    @driver.find_element(:id, "submit").click
+    sleep 0.3
+    assert(@driver.find_element(:id => "logged").text.include?("You Are Logged in"),"Assertion Failed")
+    @driver.find_element(:id, "logout").click
+  end
+end
+```
+
+### Installing docker: (Deployment Step)
+Use this link for [Installing docker on linux](https://runnable.com/docker/install-docker-on-linux)

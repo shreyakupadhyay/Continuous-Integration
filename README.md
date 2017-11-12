@@ -41,7 +41,7 @@ class LoginClass < Test::Unit::TestCase
  
   def setup  
     @driver = Selenium::WebDriver.for :firefox
-    @driver.get('http://blog.yoniflenner.net/demo')
+    @driver.get('http://localhost:3000')
     @driver.manage.window.maximize  
   end
  
@@ -52,12 +52,13 @@ class LoginClass < Test::Unit::TestCase
  
  
   def test_login
-    @driver.find_element(:name, "username").send_keys "admin"
-    @driver.find_element(:name, "password").send_keys "demo"
-    @driver.find_element(:id, "submit").click
+    @driver.find_element(:name, "signin").click
+    @driver.find_element(:name, "username").send_keys "username"
+    @driver.find_element(:name, "password").send_keys "password"
+    @driver.find_element(:name, "submit").click
     sleep 0.3
-    assert(@driver.find_element(:id => "logged").text.include?("You Are Logged in"),"Assertion Failed")
-    @driver.find_element(:id, "logout").click
+    assert(@driver.find_element(:id => "hello").text.include?("Hello"),"Assertion Failed")
+    @driver.find_element(:name, "logout").click
   end
 end
 ```

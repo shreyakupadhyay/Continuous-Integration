@@ -6,4 +6,3 @@ All the work done during DevOps project. This project focuses mainly on building
 
 
 # Work to be done:
-

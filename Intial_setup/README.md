@@ -5,12 +5,12 @@ Initial setup of tools like jenkins, docker, selenium and deciding which method 
 ### Installing jenkins: (Build Step)
 ##### Method 1:
 ```sh
-$ wget -q -O - https://pkg.jenkins.io/debian/jenkins-ci.org.key | sudo apt-key add -
-$ sudo sh -c 'echo deb http://pkg.jenkins.io/debian-stable binary/ > /etc/apt/sources.list.d/jenkins.list'
+$ wget -q -O - https://pkg.jenkins.io/debian-stable/jenkins.io.key | sudo apt-key add -
+$ sudo sh -c 'echo deb http://pkg.jenkins.io/debian-stable binary/ > /etc/apt/sources.list'
 $ sudo apt-get update && sudo apt-get install jenkins
 $ sudo systemctl start jenkins && sudo systemctl status jenkins
 ```
-Just check this shows **active**. Further follow this [link](https://www.digitalocean.com/community/tutorials/how-to-install-jenkins-on-ubuntu-16-04) in case of any issue while running above commands. Now, download the jenkins.war file to run it on local server from this [link](https://updates.jenkins-ci.org/download/war/)
+Just check this shows **active**. Further follow this [link](https://www.digitalocean.com/community/tutorials/how-to-install-jenkins-on-ubuntu-16-04) in case of any issue while running above commands. Or download the jenkins.war file to run it on local server from this [link](https://updates.jenkins-ci.org/download/war/)
 
 ```sh
 $ java -jar jenkins.war
